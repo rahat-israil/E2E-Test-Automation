@@ -11,16 +11,16 @@ public class Checkout {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        // Navigate to the Products page
+        // 1. Navigate to the Products page
         driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[2]/a")).click();
 
-        // Add the first product to the cart
+        // 2. Add the first product to the cart
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/section[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/a"))).click();
 
         // Close the "Added to cart" confirmation modal
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"cartModal\"]/div/div/div[3]/button"))).click();
 
-        // Add the second product to the cart
+        // 3. Add the second product to the cart
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/section[2]/div/div/div[2]/div/div[4]/div/div[1]/div[1]/a"))).click();
 
         // Close the confirmation modal again
@@ -49,8 +49,7 @@ public class Checkout {
         // 8. Verify that the order was placed successfully
         boolean isOrderPlaced = false;
         try {
-            String msg = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.cssSelector("[data-qa='order-placed']"))).getText();
+            String msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-qa='order-placed']"))).getText();
             isOrderPlaced = msg.equalsIgnoreCase("ORDER PLACED!");
         } catch (Exception e) {
             // Success message did not appear within the timeout
@@ -63,7 +62,7 @@ public class Checkout {
             System.out.println("Checkout FAILED: Order was not placed");
         }
 
-        // Close the browser
+        // 9. Close the browser
         driver.quit();
     }
 }

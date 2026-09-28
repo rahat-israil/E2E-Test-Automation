@@ -11,27 +11,27 @@ public class Login {
         // Block ad network requests before opening the site
         AdBlocker.blockAdRequests(driver);
 
-        // Open the Website
+        // 1. Open the Website
         driver.get("https://www.automationexercise.com/");
 
         // Maximize the Window
         driver.manage().window().maximize();
 
-        // Navigate to Login page
+        // 2. Navigate to the Login page
         driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click();
 
-        // Click on the Email field and fill up email
+        // 3. Click on the Email field and fill in the email
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")).sendKeys(TestData.email);
 
-        // Click on the Password field and fill up password
+        // 4. Click on the Password field and fill in the password
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")).sendKeys(TestData.password);
 
-        // Click on the Login button
+        // 5. Click on the Login button
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/button")).click();
 
-        // Check the Login is Successful or Failed
+        // 6. Check whether the Login is Successful or Failed
         boolean isLoggedIn = !driver.findElements(By.xpath("//*[@id='header']/div/div/div/div[2]/div/ul/li[10]/a")).isEmpty();
 
         if (isLoggedIn) {
