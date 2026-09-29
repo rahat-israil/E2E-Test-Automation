@@ -26,7 +26,7 @@ An end-to-end UI test automation project built with **Java** and **Selenium WebD
 
 ## 📖 Overview
 
-This project automates the most critical business flow of an online shopping application in a single, continuous end-to-end run. A fresh user account is created on every execution, then the same session is reused to log in, add products to the cart, and complete a purchase with payment details.
+This project automates the most critical business flow of an online shopping application in a single, continuous end-to-end run. A fresh user account is created on every execution, then browser closed and Starts a new browser session log in, add products to the cart, and complete a purchase with payment details.
 
 Each stage is verified with a **PASS / FAIL assertion** so the result of every step is visible directly in the console.
 
@@ -38,6 +38,7 @@ The automation is divided into three main components:
    - Creates a new user account
    - Enters personal and address information
    - Verifies successful registration
+   - Closed browser
 
 2. **Login**
    - Starts a new browser session
@@ -54,8 +55,7 @@ The automation is divided into three main components:
    - Enters payment information
    - Places the order
    - Verifies the `ORDER PLACED!` confirmation
-
-The browser is closed after each major workflow.
+   - Closed browser
 
 ---
 
@@ -131,7 +131,7 @@ E2E Automation
 │   ├── Login.java          # User login flow (returns the active driver session)
 │   ├── Checkout.java       # Add to cart, payment and order verification
 │   ├── TestData.java       # Centralized test data (single source of truth)
-│   └── Main.java           # Entry point — runs Registration → Login → Checkout
+│   └── Main.java           # Entry point - runs Registration → Login → Checkout
 ├── .gitignore
 └── E2E Automation.iml
 ```
@@ -146,7 +146,7 @@ Make sure the following are installed:
 - **Selenium Java 4.x** libraries (JAR files)
 - Internet connection
 
-> ℹ️ Selenium 4.6+ includes **Selenium Manager**, which downloads the matching ChromeDriver automatically — no manual driver setup is required.
+> ℹ️ Selenium 4.6+ includes **Selenium Manager**, which downloads the matching ChromeDriver automatically - no manual driver setup is required.
 
 ---
 
@@ -154,13 +154,13 @@ Make sure the following are installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
+   https://github.com/rahat-israil/E2E-Test-Automation.git
    ```
 
 2. **Open the project** in IntelliJ IDEA (`File → Open` → select the project folder).
 
 3. **Add Selenium libraries**
-   - Download the Selenium Java 4.x package from the [official Selenium site](https://www.selenium.dev/downloads/), and unzip folder then
+   - Download the Selenium Java 4.x package from the [official Selenium site](https://www.selenium.dev/downloads/), and unzip the folder then
    - `File → Project Structure → Modules → + → Select unzip folder` and add all the JAR files.
 
 4. **Set the Project SDK** to JDK 11 or higher (`File → Project Structure → Project`).
